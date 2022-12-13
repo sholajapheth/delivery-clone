@@ -1,11 +1,13 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { MapPinIcon, StarIcon } from "react-native-heroicons/outline";
+import { urlFor } from "../sanity";
 
 const ResturantCard = ({
   id,
   imgUrl,
-  title,
+  name,
   rating,
   genre,
   address,
@@ -14,12 +16,33 @@ const ResturantCard = ({
   long,
   lat,
 }) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity className="bg-white mr-3 shadow-sm">
-      <Image source={{ uri: imgUrl }} className="h-36 w-64 rounded-sm" />
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("Resturant", {
+          id,
+          imgUrl,
+          name,
+          rating,
+          genre,
+          address,
+          short_description,
+          dishes,
+          long,
+          lat,
+        })
+      }
+      className="bg-white mr-3 shadow-sm"
+    >
+      <Image
+        source={{ uri: urlFor(imgUrl).url() }}
+        className="h-36 w-64 rounded-sm"
+      />
 
       <View className="px-3 pb-4">
-        <Text className="font-bold text-lg">{title}</Text>
+        <Text className="font-bold text-lg">{name}</Text>
         <View className="flex-row items-center space-x-1">
           <StarIcon color="green" size={22} opacity={0.5} />
           <Text className="text-xs text-gray-500">
@@ -35,7 +58,5 @@ const ResturantCard = ({
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default ResturantCard;

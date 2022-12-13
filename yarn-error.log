@@ -1,0 +1,62 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\shola\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-currency-formatter
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Python38\Scripts\;C:\Program Files\Python38\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\shola\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\shola\AppData\Local\Programs\Python\Python310\;C:\Users\shola\AppData\Local\Microsoft\WindowsApps;C:\Users\shola\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2022.2.2\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin;;C:\Program Files\JetBrains\PyCharm Edu 2022.2\bin;;C:\Program Files\Java\jdk-11.0.16.1\bin;C:\Users\shola\AppData\Local\Android\sdk\platform-tools;C:\Users\shola\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\shola\OneDrive\Documents\Workspace\React Native\_projects\delivery-clone\package.json: Unexpected token } in JSON at position 763
+      at JSON.parse (<anonymous>)
+      at C:\Users\shola\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\shola\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\shola\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "delivery-clone",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web"
+    },
+    "dependencies": {
+      "@react-navigation/native": "^6.0.16",
+      "@react-navigation/native-stack": "^6.9.4",
+      "@sanity/client": "^3.4.1",
+      "@sanity/image-url": "^1.0.1",
+      "expo": "~47.0.8",
+      "expo-status-bar": "~1.4.2",
+      "nativewind": "^2.0.11",
+      "react": "18.1.0",
+      "react-native": "0.70.5",
+      "react-native-heroicons": "^3.2.0",
+      "react-native-safe-area-context": "4.4.1",
+      "react-native-screens": "~3.18.0",
+      "react-native-svg": "13.4.0",
+      "tailwindcss-react-native": "^1.7.10",
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9",
+      "tailwindcss": "^3.2.4"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

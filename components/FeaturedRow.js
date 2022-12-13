@@ -1,9 +1,33 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
+import client, { urlFor } from "../sanity";
 import ResturantCard from "./ResturantCard";
 
 const FeaturedRow = ({ id, title, description }) => {
+  const [resturants, setResturants] = React.useState([]);
+
+  React.useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "featured" && _id == $id ]{
+            ...,
+            resturants []->{
+              ...,
+              dishes []->,
+              type-> {
+                name
+              }
+            
+          },}[0]`,
+        { id }
+      )
+      .then((data) => {
+        setResturants(data.resturants);
+      });
+  }, []);
+
+
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -21,42 +45,21 @@ const FeaturedRow = ({ id, title, description }) => {
         className="pt-4"
       >
         {/* Restaurant Card  */}
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/gn7"
-          title="Yo! Shushi"
-          rating={4.5}
-          genre="Japanese"
-          address="1234 Main St"
-          short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-          dishes={["Sushi", "Ramen", "Sashimi"]}
-          long={20}
-          lat={20}
-        />
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/gn7"
-          title="Yo! Shushi"
-          rating={4.5}
-          genre="Japanese"
-          address="1234 Main St"
-          short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-          dishes={["Sushi", "Ramen", "Sashimi"]}
-          long={20}
-          lat={20}
-        />
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/gn7"
-          title="Yo! Shushi"
-          rating={4.5}
-          genre="Japanese"
-          address="1234 Main St"
-          short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-          dishes={["Sushi", "Ramen", "Sashimi"]}
-          long={20}
-          lat={20}
-        />
+        {resturants.map((resturant) => (
+          <ResturantCard
+            id={resturant._id}
+            key={resturant._id}
+            imgUrl={resturant.image}
+            name={resturant.name}
+            rating={4.5}
+            genre={resturant.genre}
+            address={resturant.address}
+            short_description={resturant.short_description}
+            dishes={resturant.dishes}
+            long={resturant.long}
+            lat={resturant.lat}
+          />
+        ))}
       </ScrollView>
     </View>
   );
