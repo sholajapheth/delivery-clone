@@ -63,7 +63,7 @@ const Dishrow = ({ id, name, description, price, image }) => {
         <View className="bg-white px-4">
           <View className="flex-row items-center space-x-2 py-2">
             <TouchableOpacity onPress={removeItemFromBasket}>
-              <MinusCircleIcon color={} size={40} />
+              <MinusCircleIcon color={items.length === 0 ? "gray" : "#00ccbb"} size={40} />
             </TouchableOpacity>
             <Text>{items.length}</Text>
             <TouchableOpacity onPress={addItemsToBasket}>
